@@ -39,15 +39,15 @@ const Footer = () => {
               Follow our journey towards sustainable fashion
             </p>
             <div className="footer-social">
-              <a href="#" aria-label="Instagram">IG</a>
-              <a href="#" aria-label="Facebook">FB</a>
-              <a href="#" aria-label="LinkedIn">LI</a>
+              <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer">IG</a>
+              <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">FB</a>
+              <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LI</a>
             </div>
           </div>
         </div>
         
         <div className="footer-bottom">
-          <p>© 2024 FILLESUMÉ. ALL RIGHTS RESERVED.</p>
+          <p> 2024 FILLESUMÉ. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>
