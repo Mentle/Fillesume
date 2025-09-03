@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 function Model({ mouse, scale, isDragging }) {
-  const { scene } = useGLTF('/fillesume_3dlogo.glb');
+  const { scene } = useGLTF('./fillesume_3dlogo.glb');
   const modelRef = useRef();
   const gooeyRef = useRef({ scaleX: 1, scaleY: 1, scaleZ: 1 });
   
@@ -188,6 +188,6 @@ const FillesumeModel = () => {
 };
 
 // Preload the model
-useGLTF.preload('/fillesume_3dlogo.glb');
+useGLTF.preload('./fillesume_3dlogo.glb');
 
 export default FillesumeModel;
