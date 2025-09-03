@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Work+Sans:wght@300;400&display=swap');
+
+:root {
+  /* Fillesume Color Palette */
+  --gondola: #1F0F14;
+  --wine-berry: #611B2A;
+  --night-shadz: #AE3647;
+  --wewak: #F6B2B2;
+  --orchid-white: #FFFCF1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--orchid-white);
+  color: var(--gondola);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+}
+
+.tabs {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.body-text {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+}
+
+.body-text-highlighted {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

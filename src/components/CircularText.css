@@ -1,0 +1,40 @@
+.circular-text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+  animation: rotateText 60s linear infinite;
+}
+
+@keyframes rotateText {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.circular-text-svg {
+  overflow: visible;
+}
+
+.circular-text {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 23.5px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  fill: var(--night-shadz);
+  text-anchor: start;
+  dominant-baseline: middle;
+}
+
+@media (max-width: 768px) {
+  .circular-text {
+    font-size: 12px;
+    letter-spacing: 6px;
+  }
+}

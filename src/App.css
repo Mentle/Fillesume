@@ -1,0 +1,14 @@
+/* Global App Styles */
+.app {
+  min-height: 100vh;
+  background-color: var(--orchid-white);
+}
+
+/* Container styles */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Page specific styles will be added as we build each page */
