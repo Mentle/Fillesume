@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Model360Viewer.css';
 
 const Model360Viewer = () => {
@@ -21,7 +21,7 @@ const Model360Viewer = () => {
     setIsAutoPlaying(false); // Stop autoplay when user interacts
   };
   
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (!isDragging) return;
     
     const deltaX = e.clientX - startX;
@@ -37,9 +37,9 @@ const Model360Viewer = () => {
       }
       setStartX(e.clientX); // Reset start position for continuous dragging
     }
-  };
+  }, [isDragging, startX, totalFrames]);
 
-  const handleTouchMove = (e) => {
+  const handleTouchMove = useCallback((e) => {
     if (!isDragging) return;
     
     e.preventDefault(); // Prevent scrolling while dragging
@@ -56,7 +56,7 @@ const Model360Viewer = () => {
       }
       setStartX(e.touches[0].clientX); // Reset start position for continuous dragging
     }
-  };
+  }, [isDragging, startX, totalFrames]);
   
   const handleMouseUp = () => {
     setIsDragging(false);
@@ -91,7 +91,7 @@ const Model360Viewer = () => {
         document.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, [isDragging, startX]);
+  }, [isDragging, startX, handleMouseMove, handleTouchMove]);
 
   return (
     <div className="model-360-viewer">
