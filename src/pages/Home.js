@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import LiquidChrome from '../components/LiquidChrome';
 import FillesumeModel from '../components/FillesumeModel';
 import Globe from '../components/Globe';
+import Model360Viewer from '../components/Model360Viewer';
 import './Home.css';
 
 const Home = () => {
@@ -44,8 +45,7 @@ const Home = () => {
               </p>
             </div>
             <div className="embrace-image">
-              {/* Placeholder for image */}
-              <div className="image-placeholder"></div>
+              <img src={`${process.env.PUBLIC_URL}/images/red2.jpg`} alt="Nuestra Filosofía" />
             </div>
           </div>
         </div>
@@ -56,8 +56,7 @@ const Home = () => {
         <div className="container">
           <div className="become-part-content">
             <div className="become-part-image">
-              {/* Placeholder for image */}
-              <div className="image-placeholder"></div>
+              <Model360Viewer />
             </div>
             <div className="become-part-text">
               <h2>NUESTRA HISTORIA</h2>
