@@ -47,6 +47,8 @@ const Model360Viewer = () => {
   const handleTouchMove = useCallback((e) => {
     if (!isDragging) return;
     
+    e.preventDefault(); // Prevent default touch behavior
+    
     const deltaX = e.touches[0].clientX - startTouchX;
     const sensitivity = 50; // pixels needed to change frame
     

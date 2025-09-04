@@ -1,6 +1,8 @@
 /* Home Page Styles */
 .home-page {
   background-color: var(--orchid-white);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Hero Section */
@@ -56,6 +58,10 @@
   padding: 18px 40px;
   cursor: pointer;
   transition: all 0.3s ease;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .hero-cta:hover {
