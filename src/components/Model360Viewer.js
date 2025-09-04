@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './Model360Viewer.css';
 
 const Model360Viewer = () => {
@@ -15,7 +15,7 @@ const Model360Viewer = () => {
     setIsAutoPlaying(false); // Stop autoplay when user interacts
   };
   
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (!isDragging) return;
     
     const deltaX = e.clientX - startX;
@@ -31,7 +31,7 @@ const Model360Viewer = () => {
       }
       setStartX(e.clientX); // Reset start position for continuous dragging
     }
-  };
+  }, [isDragging, startX, totalFrames]);
   
   const handleMouseUp = () => {
     setIsDragging(false);
