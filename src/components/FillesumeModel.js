@@ -66,7 +66,7 @@ function Model({ mouse, scale, isDragging }) {
       // Gentle wave combinations for fluid movement
       const waveX = wave1 + wave2 * 0.6 + Math.sin(slowTime * 0.5) * 0.05 * intensity;
       const waveY = wave2 + wave3 * 0.7 + Math.cos(slowTime * 0.7) * 0.04 * intensity;
-      const waveZ = wave3 + wave1 * 0.5 + Math.sin(slowTime * 0.3) * 0.03 * intensity;
+      const waveZ = wave3 + wave1 * 0.5 + wave4 * 0.3 + Math.sin(slowTime * 0.3) * 0.03 * intensity;
       
       // Subtle breathing effect for organic feel
       const pulse1 = Math.sin(slowTime * 1.1) * 0.06 * intensity;

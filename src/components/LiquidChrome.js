@@ -167,7 +167,7 @@ export const LiquidChrome = ({
       }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [baseColor, speed, amplitude, frequencyX, frequencyY, interactive]);
+  }, [baseColor, highlightColor, speed, amplitude, frequencyX, frequencyY, interactive]);
 
   return <div ref={containerRef} className="liquidChrome-container" {...props} />;
 };

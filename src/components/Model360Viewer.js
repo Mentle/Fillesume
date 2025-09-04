@@ -58,7 +58,7 @@ const Model360Viewer = () => {
         document.removeEventListener('mouseup', handleMouseUp);
       };
     }
-  }, [isDragging, startX]);
+  }, [isDragging, startX, handleMouseMove]);
 
   return (
     <div className="model-360-viewer">
