@@ -10,7 +10,7 @@ function EarthGlobe({ mouse, isDragging }) {
   // Load Earth texture from local public folder
   const earthTexture = useLoader(
     THREE.TextureLoader,
-    './earth_texture.jpg'
+    process.env.NODE_ENV === 'production' ? './earth_texture.jpg' : '/earth_texture.jpg'
   );
   
   // Enhance texture brightness and fix orientation
