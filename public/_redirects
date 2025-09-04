@@ -1,0 +1,10 @@
+# Serve static assets directly
+/fillesume_3dlogo.glb /fillesume_3dlogo.glb 200
+/earth_texture.jpg /earth_texture.jpg 200
+/*.glb /*.glb 200
+/*.jpg /*.jpg 200
+/*.png /*.png 200
+/*.ico /*.ico 200
+
+# Fallback to index.html for SPA routing
+/* /index.html 200

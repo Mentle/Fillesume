@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
 function Model({ mouse, scale, isDragging }) {
-  const { scene } = useGLTF(process.env.NODE_ENV === 'production' ? './fillesume_3dlogo.glb' : '/fillesume_3dlogo.glb');
+  const { scene } = useGLTF(process.env.NODE_ENV === 'production' ? './fillesume_3dlogo.glb' : `${process.env.PUBLIC_URL}/fillesume_3dlogo.glb`);
   const modelRef = useRef();
   const gooeyRef = useRef({ scaleX: 1, scaleY: 1, scaleZ: 1 });
   
