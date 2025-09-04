@@ -50,7 +50,7 @@
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 2px;
-  background-color: var(--wine-berry);
+  background-color: var(--night-shadz);
   color: var(--orchid-white);
   border: none;
   padding: 18px 40px;
@@ -59,7 +59,7 @@
 }
 
 .hero-cta:hover {
-  background-color: var(--night-shadz);
+  background-color: var(--wine-berry);
   transform: translateY(-2px);
 }
 

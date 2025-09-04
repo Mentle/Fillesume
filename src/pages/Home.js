@@ -14,15 +14,16 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <LiquidChrome
-          baseColor={[0.95, 0.7, 0.7]} // Wewak color in RGB (0-1 range)
+          baseColor="#FFFCF1" // Wewak hex color
+          highlightColor="#F6B2B2"F6B2B2 // Orchid White hex color
           speed={1}
           amplitude={0.6}
           interactive={true}
         />
         <FillesumeModel />
         <div className="hero-content">
-          <p className="hero-subtitle">Pioneering compostable clothing through regenerative biomaterials</p>
-          <button className="hero-cta">DISCOVER OUR STORY</button>
+          <p className="hero-subtitle">Diseñamos con la tierra, para la tierra</p>
+          <button className="hero-cta">DESCUBRE NUESTRA HISTORIA</button>
         </div>
       </section>
 
@@ -31,15 +32,15 @@ const Home = () => {
         <div className="container">
           <div className="embrace-content">
             <div className="embrace-text">
-              <h2>EMBRACE SUSTAINABILITY</h2>
+              <h2>NUESTRA FILOSOFÍA</h2>
               <p className="body-text">
-                At Fillesumé, we're redefining fashion through innovation and responsibility. 
-                Our garments are crafted from regenerative biomaterials that not only look 
-                beautiful but also return safely to the earth at the end of their lifecycle.
+                En Fillesumé creemos que la innovación en la moda debe ir acompañada de responsabilidad 
+                ambiental y visión de futuro. Diseñamos prendas compostables que, tras tu uso, pueden 
+                regresar a la tierra como abono.
               </p>
               <p className="body-text">
-                Join us in creating a circular fashion future where style meets sustainability, 
-                and every piece tells a story of environmental consciousness.
+                Nuestro compromiso es crear moda que no deje residuos, sino que nutra el suelo. 
+                La tierra es nuestro punto de partida pero también nuestro destino final.
               </p>
             </div>
             <div className="embrace-image">
@@ -59,15 +60,16 @@ const Home = () => {
               <div className="image-placeholder"></div>
             </div>
             <div className="become-part-text">
-              <h2>BECOME PART OF THE CHANGE</h2>
+              <h2>NUESTRA HISTORIA</h2>
               <p className="body-text">
-                Every Fillesumé piece is a statement of intent - a commitment to fashion that 
-                respects both people and planet. Our innovative BioTextil process transforms 
-                natural materials into luxurious fabrics that biodegrade completely.
+                Fillesumé nace de la inquietud de repensar el papel de la moda en el contexto actual 
+                del planeta: la alteración del clima, la pérdida de naturaleza y biodiversidad, 
+                y la contaminación y la generación de residuos.
               </p>
               <p className="body-text">
-                Experience the perfect blend of contemporary design and ecological responsibility. 
-                Choose clothing that aligns with your values without compromising on style.
+                Su fundadora, Blanca Sume, biodiseñadora de formación, comenzó desarrollando biomateriales 
+                en el laboratorio y posteriormente los aplicó al diseño textil. Cada colección combina 
+                investigación matérica con diseño de prendas únicas producidas artesanalmente.
               </p>
             </div>
           </div>
@@ -77,42 +79,42 @@ const Home = () => {
       {/* Our Principles Section */}
       <section className="principles-section">
         <div className="container">
-          <h2 className="section-title">OUR PRINCIPLES</h2>
+          <h2 className="section-title">NUESTROS VALORES</h2>
           <div className="principles-grid">
             <div className="principle-card">
-              <h3>INNOVATION</h3>
+              <h3>REGENERAR</h3>
               <p className="body-text">
-                Pushing boundaries in sustainable textile development through cutting-edge research.
+                Transformar residuos en materiales útiles, dando una segunda vida a los desechos alimentarios.
               </p>
             </div>
             <div className="principle-card">
-              <h3>RESPONSIBILITY</h3>
+              <h3>CIRCULARIDAD</h3>
               <p className="body-text">
-                Taking accountability for our environmental impact at every stage of production.
+                Diseñar prendas que vuelvan a la tierra al final de su vida útil, cerrando el ciclo.
               </p>
             </div>
             <div className="principle-card">
-              <h3>TRANSPARENCY</h3>
+              <h3>INNOVAR</h3>
               <p className="body-text">
-                Open communication about our processes, materials, and supply chain.
+                Explorar nuevas soluciones materiales y técnicas de confección en nuestro taller-laboratorio.
               </p>
             </div>
             <div className="principle-card">
-              <h3>CRAFTSMANSHIP</h3>
+              <h3>TRANSPARENCIA</h3>
               <p className="body-text">
-                Honoring traditional techniques while embracing modern sustainable practices.
+                Comunicación clara sobre procesos, materiales y trazabilidad en cada etapa.
               </p>
             </div>
             <div className="principle-card">
-              <h3>EDUCATION</h3>
+              <h3>ARTESANÍA CONTEMPORÁNEA</h3>
               <p className="body-text">
-                Empowering consumers with knowledge about sustainable fashion choices.
+                Procesos manuales y atención al detalle, combinando tradición e innovación.
               </p>
             </div>
             <div className="principle-card">
-              <h3>CIRCULARITY</h3>
+              <h3>EDUCACIÓN</h3>
               <p className="body-text">
-                Designing for a closed-loop system where nothing goes to waste.
+                Talleres, charlas y colaboraciones para compartir conocimiento sobre moda sostenible.
               </p>
             </div>
           </div>
@@ -122,32 +124,32 @@ const Home = () => {
       {/* Our Garments Section */}
       <section className="garments-section">
         <div className="container">
-          <h2 className="section-title">OUR GARMENTS</h2>
-          <p className="section-subtitle">Each piece crafted with purpose and precision</p>
+          <h2 className="section-title">MATERIALES & PROCESOS CREATIVOS</h2>
+          <p className="section-subtitle">La innovación comienza en la materia prima</p>
           <div className="garments-grid">
             <div className="garment-card">
               <div className="garment-image">
                 <div className="image-placeholder"></div>
               </div>
-              <h3>ESSENTIALS</h3>
-              <p className="body-text">Timeless basics reimagined</p>
+              <h3>BIOMATERIALES</h3>
+              <p className="body-text">Desarrollados desde cero en nuestro taller-laboratorio</p>
             </div>
             <div className="garment-card">
               <div className="garment-image">
                 <div className="image-placeholder"></div>
               </div>
-              <h3>SEASONAL</h3>
-              <p className="body-text">Limited collections inspired by nature</p>
+              <h3>HUESO DE ACEITUNA</h3>
+              <p className="body-text">Transformamos residuos alimentarios en textiles innovadores</p>
             </div>
             <div className="garment-card">
               <div className="garment-image">
                 <div className="image-placeholder"></div>
               </div>
-              <h3>CUSTOM</h3>
-              <p className="body-text">Bespoke pieces tailored to you</p>
+              <h3>COMPOSTABLES</h3>
+              <p className="body-text">Garantizamos que puedan regresar a la tierra</p>
             </div>
           </div>
-          <button className="section-cta">EXPLORE COLLECTION</button>
+          <button className="section-cta">EXPLORA NUESTRA COLECCIÓN</button>
         </div>
       </section>
 
@@ -155,27 +157,27 @@ const Home = () => {
       <section className="lifecycle-section">
         <div className="container">
           <Globe />
-          <p className="section-subtitle">The complete lifecycle of our garments</p>
+          <p className="section-subtitle">El ciclo completo de nuestras prendas</p>
           <div className="lifecycle-steps">
             <div className="lifecycle-step">
               <div className="step-number">01</div>
-              <h3>SOURCE</h3>
-              <p className="body-text">Regenerative materials from certified suppliers</p>
+              <h3>INVESTIGAR</h3>
+              <p className="body-text">Desarrollamos biomateriales en nuestro taller-laboratorio</p>
             </div>
             <div className="lifecycle-step">
               <div className="step-number">02</div>
-              <h3>CREATE</h3>
-              <p className="body-text">Crafted with care by local artisans</p>
+              <h3>CREAR</h3>
+              <p className="body-text">Confeccionamos artesanalmente con ciencia y diseño</p>
             </div>
             <div className="lifecycle-step">
               <div className="step-number">03</div>
-              <h3>WEAR</h3>
-              <p className="body-text">Enjoyed and cherished by you</p>
+              <h3>USAR</h3>
+              <p className="body-text">Disfrutas de prendas únicas y sostenibles</p>
             </div>
             <div className="lifecycle-step">
               <div className="step-number">04</div>
-              <h3>RETURN</h3>
-              <p className="body-text">Composted to nourish the earth</p>
+              <h3>COMPOSTAR</h3>
+              <p className="body-text">La prenda regresa a la tierra como abono</p>
             </div>
           </div>
         </div>

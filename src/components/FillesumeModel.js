@@ -16,13 +16,9 @@ function Model({ mouse, scale, isDragging }) {
       
       scene.traverse((child) => {
         if (child.isMesh) {
-          // Create a new material with the Night Shadz color
-          child.material = new THREE.MeshStandardMaterial({
+          // Create a new material with pure Night Shadz color - no shading
+          child.material = new THREE.MeshBasicMaterial({
             color: nightShadzColor,
-            metalness: 0.0,
-            roughness: 0.8,
-            emissive: nightShadzColor,
-            emissiveIntensity: 0.1,
           });
         }
       });
@@ -209,8 +205,6 @@ const FillesumeModel = () => {
         style={{ background: 'transparent' }}
       >
         <Suspense fallback={null}>
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[2, 2, 2]} intensity={0.3} />
           <Model mouse={mouse} scale={getScale()} isDragging={isDragging} />
         </Suspense>
       </Canvas>

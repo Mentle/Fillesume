@@ -3,8 +3,19 @@ import { Renderer, Program, Mesh, Triangle } from 'ogl';
 
 import './LiquidChrome.css';
 
+// Helper function to convert hex to RGB array (0-1 range)
+const hexToRgb = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? [
+    parseInt(result[1], 16) / 255,
+    parseInt(result[2], 16) / 255,
+    parseInt(result[3], 16) / 255
+  ] : [0.1, 0.1, 0.1];
+};
+
 export const LiquidChrome = ({
-  baseColor = [0.1, 0.1, 0.1],
+  baseColor = "#1a1a1a", // Default dark gray hex
+  highlightColor = "#ffffff", // Default white highlights
   speed = 0.2,
   amplitude = 0.3,
   frequencyX = 3,
@@ -37,6 +48,7 @@ export const LiquidChrome = ({
       uniform float uTime;
       uniform vec3 uResolution;
       uniform vec3 uBaseColor;
+      uniform vec3 uHighlightColor;
       uniform float uAmplitude;
       uniform float uFrequencyX;
       uniform float uFrequencyY;
@@ -58,7 +70,8 @@ export const LiquidChrome = ({
           float ripple = sin(10.0 * dist - uTime * 2.0) * 0.03;
           uv += (diff / (dist + 0.0001)) * ripple * falloff;
 
-          vec3 color = uBaseColor / abs(sin(uTime - uv.y - uv.x));
+          float intensity = abs(sin(uTime - uv.y - uv.x));
+          vec3 color = mix(uHighlightColor, uBaseColor, intensity);
           return vec4(color, 1.0);
       }
 
@@ -85,7 +98,8 @@ export const LiquidChrome = ({
         uResolution: {
           value: new Float32Array([gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height])
         },
-        uBaseColor: { value: new Float32Array(baseColor) },
+        uBaseColor: { value: new Float32Array(hexToRgb(baseColor)) },
+        uHighlightColor: { value: new Float32Array(hexToRgb(highlightColor)) },
         uAmplitude: { value: amplitude },
         uFrequencyX: { value: frequencyX },
         uFrequencyY: { value: frequencyY },
