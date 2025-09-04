@@ -142,7 +142,7 @@ export const LiquidChrome = ({
 
     if (interactive) {
       container.addEventListener('mousemove', handleMouseMove);
-      container.addEventListener('touchmove', handleTouchMove);
+      container.addEventListener('touchmove', handleTouchMove, { passive: false });
     }
 
     let animationId;
@@ -167,7 +167,7 @@ export const LiquidChrome = ({
       }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-  }, [baseColor, highlightColor, speed, amplitude, frequencyX, frequencyY, interactive]);
+  }, [baseColor, speed, amplitude, frequencyX, frequencyY, interactive]);
 
   return <div ref={containerRef} className="liquidChrome-container" {...props} />;
 };

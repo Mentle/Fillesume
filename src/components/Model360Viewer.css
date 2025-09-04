@@ -2,7 +2,6 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .model-image-container {
@@ -16,7 +15,6 @@
   align-items: center;
   justify-content: center;
   user-select: none;
-  box-sizing: border-box;
 }
 
 .model-image {
@@ -80,14 +78,10 @@
 @media (max-width: 768px) {
   .model-360-viewer {
     max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
   }
   
   .model-image-container {
     height: 480px;
-    width: 100%;
-    box-sizing: border-box;
   }
   
 }

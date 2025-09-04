@@ -16,7 +16,7 @@ const Home = () => {
       <section className="hero">
         <LiquidChrome
           baseColor="#FFFCF1" // Wewak hex color
-          highlightColor="#F6B2B2"F6B2B2 // Orchid White hex color
+          highlightColor="#F6B2B2" // Orchid White hex color
           speed={1}
           amplitude={0.6}
           interactive={true}

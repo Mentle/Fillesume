@@ -432,11 +432,6 @@
     gap: 40px;
   }
 
-  .become-part-image {
-    width: 100%;
-    overflow: hidden;
-  }
-
   .embrace-text h2,
   .become-part-text h2 {
     font-size: 28px;

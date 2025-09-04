@@ -61,6 +61,7 @@ function Model({ mouse, scale, isDragging }) {
       const wave1 = Math.sin(slowTime * 2.1) * 0.15 * intensity;
       const wave2 = Math.sin(slowTime * 1.7 + Math.PI/3) * 0.12 * intensity;
       const wave3 = Math.cos(slowTime * 2.4 + Math.PI/2) * 0.1 * intensity;
+      const wave4 = Math.sin(slowTime * 1.3 + Math.PI/6) * 0.08 * intensity;
       
       // Gentle wave combinations for fluid movement
       const waveX = wave1 + wave2 * 0.6 + Math.sin(slowTime * 0.5) * 0.05 * intensity;
