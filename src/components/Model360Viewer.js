@@ -5,6 +5,7 @@ const Model360Viewer = () => {
   const [currentFrame, setCurrentFrame] = useState(1);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
+  const [startTouchX, setStartTouchX] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const totalFrames = 6;
@@ -36,6 +37,34 @@ const Model360Viewer = () => {
   const handleMouseUp = () => {
     setIsDragging(false);
   };
+
+  const handleTouchStart = (e) => {
+    setIsDragging(true);
+    setStartTouchX(e.touches[0].clientX);
+    setIsAutoPlaying(false); // Stop autoplay when user interacts
+  };
+
+  const handleTouchMove = useCallback((e) => {
+    if (!isDragging) return;
+    
+    const deltaX = e.touches[0].clientX - startTouchX;
+    const sensitivity = 50; // pixels needed to change frame
+    
+    if (Math.abs(deltaX) >= sensitivity) {
+      if (deltaX > 0) {
+        // Dragging right - next frame
+        setCurrentFrame(prev => prev === totalFrames ? 1 : prev + 1);
+      } else {
+        // Dragging left - previous frame
+        setCurrentFrame(prev => prev === 1 ? totalFrames : prev - 1);
+      }
+      setStartTouchX(e.touches[0].clientX); // Reset start position for continuous dragging
+    }
+  }, [isDragging, startTouchX, totalFrames]);
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
   
   // Autoplay effect
   useEffect(() => {
@@ -52,19 +81,24 @@ const Model360Viewer = () => {
     if (isDragging) {
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchmove', handleTouchMove, { passive: false });
+      document.addEventListener('touchend', handleTouchEnd);
       
       return () => {
         document.removeEventListener('mousemove', handleMouseMove);
         document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchmove', handleTouchMove);
+        document.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, [isDragging, startX, handleMouseMove]);
+  }, [isDragging, startX, handleMouseMove, handleTouchMove]);
 
   return (
     <div className="model-360-viewer">
       <div 
         className="model-image-container"
         onMouseDown={handleMouseDown}
+        onTouchStart={handleTouchStart}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
         <img 
