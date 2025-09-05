@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './ImageModal.css';
 
 const ImageModal = ({ isOpen, imageSrc, imageAlt, onClose }) => {
@@ -8,11 +8,11 @@ const ImageModal = ({ isOpen, imageSrc, imageAlt, onClose }) => {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape') {
       onClose();
     }
-  };
+  }, [onClose]);
 
   React.useEffect(() => {
     if (isOpen) {

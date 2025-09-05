@@ -61,13 +61,32 @@ const Model360Viewer = () => {
       setAccumulatedDelta(newAccumulated);
     }
   }, [isDragging, startX, totalFrames, accumulatedDelta]);
+
+  // Start countdown function
+  const startCountdown = useCallback(() => {
+    if (!isAutoPlaying) {
+      setCountdown(5); // Start at 5 seconds
+      let count = 5;
+      
+      countdownRef.current = setInterval(() => {
+        count--;
+        if (count <= 0) {
+          clearInterval(countdownRef.current);
+          setCountdown(null);
+          setIsAutoPlaying(true); // Resume autoplay
+        } else {
+          setCountdown(count);
+        }
+      }, 1000);
+    }
+  }, [isAutoPlaying]);
   
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
     setStartX(0);
     setAccumulatedDelta(0);
     startCountdown(); // Start countdown after stopping rotation
-  };
+  }, [startCountdown]);
 
   const handleTouchStart = (e) => {
     setIsDragging(true);
@@ -119,30 +138,11 @@ const Model360Viewer = () => {
     }
   }, [isDragging, startTouchX, totalFrames, accumulatedDelta]);
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
     setAccumulatedDelta(0); // Reset accumulated delta when stopping
     startCountdown(); // Start countdown after stopping rotation
-  };
-
-  // Start countdown function
-  const startCountdown = () => {
-    if (!isAutoPlaying) {
-      setCountdown(5); // Start at 5 seconds
-      let count = 5;
-      
-      countdownRef.current = setInterval(() => {
-        count--;
-        if (count <= 0) {
-          clearInterval(countdownRef.current);
-          setCountdown(null);
-          setIsAutoPlaying(true); // Resume autoplay
-        } else {
-          setCountdown(count);
-        }
-      }, 1000);
-    }
-  };
+  }, [startCountdown]);
 
   const toggleAutoplay = () => {
     setIsAutoPlaying(!isAutoPlaying);

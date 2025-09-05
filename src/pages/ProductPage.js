@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -20,9 +20,9 @@ const ProductPage = () => {
 
   useEffect(() => {
     fetchProduct();
-  }, [id]);
+  }, [fetchProduct]);
 
-  const fetchProduct = async () => {
+  const fetchProduct = useCallback(async () => {
     const query = `
       {
         product(id: "gid://shopify/Product/${id}") {
@@ -102,7 +102,7 @@ const ProductPage = () => {
       setLoading(false);
       navigate('/shop');
     }
-  };
+  }, [id]);
 
   const handleAddToCart = () => {
     if (!selectedVariant) return;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './Shop.css';
@@ -15,15 +15,7 @@ const Shop = () => {
   const SHOPIFY_DOMAIN = 't4xyer-a0.myshopify.com';
   const STOREFRONT_ACCESS_TOKEN = '53ccb4131ef3725ef749e97a6c2a242f';
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  useEffect(() => {
-    filterAndSortProducts();
-  }, [products, selectedCategory, priceRange, sortBy]);
-
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     const query = `
       {
         products(first: 20) {
@@ -87,10 +79,48 @@ const Shop = () => {
       setLoading(false);
     } catch (error) {
       console.error('Error fetching products:', error);
-      setProducts(getDemoProducts());
       setLoading(false);
     }
-  };
+  }, []);
+
+  const filterAndSortProducts = useCallback(() => {
+    let filtered = [...products];
+
+    // Filter by category
+    if (selectedCategory !== 'all') {
+      filtered = filtered.filter(product => 
+        product.productType?.toLowerCase() === selectedCategory.toLowerCase()
+      );
+    }
+
+    // Filter by price range
+    filtered = filtered.filter(product => 
+      product.price >= priceRange.min && product.price <= priceRange.max
+    );
+
+    // Sort products
+    const sorted = filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'price-low':
+          return a.price - b.price;
+        case 'price-high':
+          return b.price - a.price;
+        case 'title':
+        default:
+          return a.title.localeCompare(b.title);
+      }
+    });
+    
+    setFilteredProducts(sorted);
+  }, [products, selectedCategory, priceRange, sortBy]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
+
+  useEffect(() => {
+    filterAndSortProducts();
+  }, [filterAndSortProducts]);
 
   const getDemoProducts = () => {
     return [
@@ -193,36 +223,6 @@ const Shop = () => {
     ];
   };
 
-  const filterAndSortProducts = () => {
-    let filtered = [...products];
-
-    // Filter by category
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(product => 
-        product.productType?.toLowerCase() === selectedCategory.toLowerCase()
-      );
-    }
-
-    // Filter by price range
-    filtered = filtered.filter(product => 
-      product.price >= priceRange.min && product.price <= priceRange.max
-    );
-
-    // Sort products
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'price-low':
-          return a.price - b.price;
-        case 'price-high':
-          return b.price - a.price;
-        case 'title':
-        default:
-          return a.title.localeCompare(b.title);
-      }
-    });
-
-    setFilteredProducts(filtered);
-  };
 
   const getCategories = () => {
     const categories = ['all', ...new Set(products.map(p => p.productType).filter(Boolean))];

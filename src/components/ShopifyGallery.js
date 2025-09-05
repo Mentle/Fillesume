@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ShopifyGallery.css';
 
@@ -11,12 +11,7 @@ const ShopifyGallery = () => {
   const SHOPIFY_DOMAIN = 't4xyer-a0.myshopify.com';
   const STOREFRONT_ACCESS_TOKEN = '53ccb4131ef3725ef749e97a6c2a242f';
   
-  useEffect(() => {
-    // Fetch products from Shopify Storefront API
-    fetchProducts();
-  }, []);
-
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     const query = `
       {
         products(first: 6) {
@@ -75,11 +70,13 @@ const ShopifyGallery = () => {
     } catch (error) {
       console.error('Error fetching products:', error);
       setLoading(false);
-      
-      // Fallback to demo products if API fails
-      setProducts(getDemoProducts());
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    // Fetch products from Shopify Storefront API
+    fetchProducts();
+  }, [fetchProducts]);
 
   const getDemoProducts = () => {
     // Demo products for development/testing
