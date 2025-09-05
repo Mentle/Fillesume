@@ -1,0 +1,187 @@
+.shopify-gallery-section {
+  padding: 100px 0;
+  background-color: var(--orchid-white);
+}
+
+.shopify-gallery-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.shopify-gallery-section .section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: var(--gondola);
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.shopify-gallery-section .section-subtitle {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--gondola);
+  text-align: center;
+  margin-bottom: 80px;
+  line-height: 1.6;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.product-card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: transparent;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+}
+
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  background-color: var(--orchid-white);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  background-color: var(--orchid-white);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.03);
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(31, 15, 20, 0.8) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 30px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+
+.view-product {
+  color: var(--orchid-white);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 12px 28px;
+  border: 1px solid var(--orchid-white);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover .view-product {
+  background: var(--orchid-white);
+  color: var(--gondola);
+}
+
+.product-info {
+  padding: 25px 0;
+}
+
+.product-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--gondola);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-description {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--gondola);
+  margin-bottom: 15px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.product-price {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--night-shadz);
+}
+
+.gallery-cta {
+  display: block;
+  margin: 0 auto;
+  padding: 18px 40px;
+  background-color: var(--night-shadz);
+  color: var(--orchid-white);
+  border: none;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.gallery-cta:hover {
+  background-color: var(--wine-berry);
+  transform: translateY(-2px);
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 60px 0;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  color: var(--gondola);
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .product-image-wrapper {
+    height: 400px;
+  }
+
+  .shopify-gallery-section .section-title {
+    font-size: 2rem;
+  }
+
+  .gallery-cta {
+    padding: 12px 30px;
+    font-size: 12px;
+  }
+}

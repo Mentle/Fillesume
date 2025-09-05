@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import LiquidChrome from '../components/LiquidChrome';
 import FillesumeModel from '../components/FillesumeModel';
 import Globe from '../components/Globe';
 import Model360Viewer from '../components/Model360Viewer';
+import ShopifyGallery from '../components/ShopifyGallery';
+import ImageModal from '../components/ImageModal';
 import './Home.css';
 
 const Home = () => {
+  const [modalImage, setModalImage] = useState({ isOpen: false, src: '', alt: '' });
+
+  const openModal = (src, alt) => {
+    setModalImage({ isOpen: true, src, alt });
+  };
+
+  const closeModal = () => {
+    setModalImage({ isOpen: false, src: '', alt: '' });
+  };
+
   return (
     <div className="home-page">
       <Navbar />
@@ -50,6 +62,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Shopify Gallery Section */}
+      <ShopifyGallery />
 
       {/* Become Part Section */}
       <section className="become-part-section">
@@ -186,24 +201,56 @@ const Home = () => {
       <section className="gallery-section">
         <div className="gallery-grid">
           <div className="gallery-item large">
-            <div className="image-placeholder"></div>
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/gallery1.jpeg`} 
+              alt="Gallery Image 1" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery1.jpeg`, 'Gallery Image 1')}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           <div className="gallery-item">
-            <div className="image-placeholder"></div>
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/gallery2.jpeg`} 
+              alt="Gallery Image 2" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery2.jpeg`, 'Gallery Image 2')}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           <div className="gallery-item">
-            <div className="image-placeholder"></div>
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/gallery3.jpeg`} 
+              alt="Gallery Image 3" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery3.jpeg`, 'Gallery Image 3')}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           <div className="gallery-item">
-            <div className="image-placeholder"></div>
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/gallery4.jpeg`} 
+              alt="Gallery Image 4" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery4.jpeg`, 'Gallery Image 4')}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
           <div className="gallery-item">
-            <div className="image-placeholder"></div>
+            <img 
+              src={`${process.env.PUBLIC_URL}/images/gallery5.jpeg`} 
+              alt="Gallery Image 5" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery5.jpeg`, 'Gallery Image 5')}
+              style={{ cursor: 'pointer' }}
+            />
           </div>
         </div>
       </section>
 
       <Footer />
+      
+      <ImageModal 
+        isOpen={modalImage.isOpen}
+        imageSrc={modalImage.src}
+        imageAlt={modalImage.alt}
+        onClose={closeModal}
+      />
     </div>
   );
 };

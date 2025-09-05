@@ -1,0 +1,49 @@
+.masked-liquid-chrome {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Liquid Chrome Background Layer */
+.masked-liquid-chrome__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Shadow Layer - Creates edge shadows in cutout areas */
+.masked-liquid-chrome__shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Mask Overlay - Covers everything except cutouts */
+.masked-liquid-chrome__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Content Layer - For any content rendered on top */
+.masked-liquid-chrome__content {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

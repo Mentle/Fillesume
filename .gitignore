@@ -18,6 +18,9 @@
 .env.test.local
 .env.production.local
 
+# local files not for github
+LOCAL FILES NOT FOR GITHUB/
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -106,12 +106,19 @@
   background-color: var(--wewak);
 }
 
+.embrace-image {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 500px;
+  background-color: var(--orchid-white);
+}
+
 .embrace-image img {
   width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 8px;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  display: block;
 }
 
 /* Become Part Section */
@@ -345,11 +352,24 @@
   grid-row: span 2;
 }
 
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
 .gallery-item .image-placeholder {
   width: 100%;
   height: 100%;
   background-color: var(--gondola);
-  opacity: 0.1;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
@@ -432,10 +452,26 @@
 /* Large desktop keeps the default 150px from the main rule */
 
 @media screen and (max-width: 768px) {
-  .embrace-content,
+  .embrace-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .embrace-text {
+    order: 2;
+  }
+
+  .embrace-image {
+    order: 1;
+  }
+
   .become-part-content {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .embrace-image {
+    height: 400px;
   }
 
   .embrace-text h2,

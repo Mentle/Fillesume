@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
 .navbar-logo {
   font-family: 'Syne', sans-serif;
   font-weight: 700;
@@ -24,6 +30,14 @@
   color: var(--gondola);
   text-decoration: none;
   letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo-image {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
 }
 
 .navbar-menu {
@@ -95,5 +109,62 @@
 
   .navbar-item {
     padding: 10px 0;
+  }
+}
+
+/* Cart Icon Styles */
+.cart-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gondola);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 8px;
+}
+
+.cart-icon:hover {
+  color: var(--wine-berry);
+}
+
+.cart-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.cart-count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background-color: var(--night-shadz);
+  color: var(--orchid-white);
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-right {
+    gap: 8px;
+  }
+  
+  .cart-icon {
+    order: -1; /* Show cart icon before hamburger menu */
+  }
+  
+  .navbar-menu-icon {
+    order: 1; /* Show hamburger menu after cart icon */
+  }
+  
+  .navbar-menu {
+    top: 70px;
   }
 }

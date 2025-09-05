@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import MaskedLiquidChrome from './MaskedLiquidChrome';
 import './Model360Viewer.css';
 
 const Model360Viewer = () => {
@@ -7,6 +8,9 @@ const Model360Viewer = () => {
   const [startX, setStartX] = useState(0);
   const [startTouchX, setStartTouchX] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [accumulatedDelta, setAccumulatedDelta] = useState(0);
+  const [countdown, setCountdown] = useState(null);
+  const countdownRef = useRef(null);
 
   const totalFrames = 6;
   
@@ -14,34 +18,65 @@ const Model360Viewer = () => {
     setIsDragging(true);
     setStartX(e.clientX);
     setIsAutoPlaying(false); // Stop autoplay when user interacts
+    setCountdown(null); // Clear countdown when starting to drag
+    if (countdownRef.current) {
+      clearInterval(countdownRef.current);
+    }
   };
   
   const handleMouseMove = useCallback((e) => {
     if (!isDragging) return;
     
     const deltaX = e.clientX - startX;
-    const sensitivity = 50; // pixels needed to change frame
+    const newAccumulated = accumulatedDelta + deltaX;
+    const sensitivity = 80; // Higher sensitivity to prevent jumping
     
-    if (Math.abs(deltaX) >= sensitivity) {
-      if (deltaX > 0) {
-        // Dragging right - next frame
-        setCurrentFrame(prev => prev === totalFrames ? 1 : prev + 1);
+    if (Math.abs(newAccumulated) >= sensitivity) {
+      const framesToMove = Math.floor(Math.abs(newAccumulated) / sensitivity);
+      
+      if (newAccumulated > 0) {
+        // Dragging right - next frame(s)
+        setCurrentFrame(prev => {
+          let newFrame = prev + framesToMove;
+          while (newFrame > totalFrames) {
+            newFrame -= totalFrames;
+          }
+          return newFrame;
+        });
       } else {
-        // Dragging left - previous frame
-        setCurrentFrame(prev => prev === 1 ? totalFrames : prev - 1);
+        // Dragging left - previous frame(s)
+        setCurrentFrame(prev => {
+          let newFrame = prev - framesToMove;
+          while (newFrame < 1) {
+            newFrame += totalFrames;
+          }
+          return newFrame;
+        });
       }
-      setStartX(e.clientX); // Reset start position for continuous dragging
+      
+      // Reset accumulated delta, keeping remainder
+      setAccumulatedDelta(newAccumulated % sensitivity * Math.sign(newAccumulated));
+      setStartX(e.clientX);
+    } else {
+      setAccumulatedDelta(newAccumulated);
     }
-  }, [isDragging, startX, totalFrames]);
+  }, [isDragging, startX, totalFrames, accumulatedDelta]);
   
   const handleMouseUp = () => {
     setIsDragging(false);
+    setStartX(0);
+    setAccumulatedDelta(0);
+    startCountdown(); // Start countdown after stopping rotation
   };
 
   const handleTouchStart = (e) => {
     setIsDragging(true);
     setStartTouchX(e.touches[0].clientX);
     setIsAutoPlaying(false); // Stop autoplay when user interacts
+    setCountdown(null); // Clear countdown when starting to drag
+    if (countdownRef.current) {
+      clearInterval(countdownRef.current);
+    }
   };
 
   const handleTouchMove = useCallback((e) => {
@@ -50,22 +85,71 @@ const Model360Viewer = () => {
     e.preventDefault(); // Prevent default touch behavior
     
     const deltaX = e.touches[0].clientX - startTouchX;
-    const sensitivity = 50; // pixels needed to change frame
+    const newAccumulated = accumulatedDelta + deltaX;
+    const sensitivity = 80; // Higher sensitivity to prevent jumping
     
-    if (Math.abs(deltaX) >= sensitivity) {
-      if (deltaX > 0) {
-        // Dragging right - next frame
-        setCurrentFrame(prev => prev === totalFrames ? 1 : prev + 1);
+    if (Math.abs(newAccumulated) >= sensitivity) {
+      const framesToMove = Math.floor(Math.abs(newAccumulated) / sensitivity);
+      
+      if (newAccumulated > 0) {
+        // Dragging right - next frame(s)
+        setCurrentFrame(prev => {
+          let newFrame = prev + framesToMove;
+          while (newFrame > totalFrames) {
+            newFrame -= totalFrames;
+          }
+          return newFrame;
+        });
       } else {
-        // Dragging left - previous frame
-        setCurrentFrame(prev => prev === 1 ? totalFrames : prev - 1);
+        // Dragging left - previous frame(s)
+        setCurrentFrame(prev => {
+          let newFrame = prev - framesToMove;
+          while (newFrame < 1) {
+            newFrame += totalFrames;
+          }
+          return newFrame;
+        });
       }
-      setStartTouchX(e.touches[0].clientX); // Reset start position for continuous dragging
+      
+      // Reset accumulated delta, keeping remainder
+      setAccumulatedDelta(newAccumulated % sensitivity * Math.sign(newAccumulated));
+      setStartTouchX(e.touches[0].clientX);
+    } else {
+      setAccumulatedDelta(newAccumulated);
     }
-  }, [isDragging, startTouchX, totalFrames]);
+  }, [isDragging, startTouchX, totalFrames, accumulatedDelta]);
 
   const handleTouchEnd = () => {
     setIsDragging(false);
+    setAccumulatedDelta(0); // Reset accumulated delta when stopping
+    startCountdown(); // Start countdown after stopping rotation
+  };
+
+  // Start countdown function
+  const startCountdown = () => {
+    if (!isAutoPlaying) {
+      setCountdown(5); // Start at 5 seconds
+      let count = 5;
+      
+      countdownRef.current = setInterval(() => {
+        count--;
+        if (count <= 0) {
+          clearInterval(countdownRef.current);
+          setCountdown(null);
+          setIsAutoPlaying(true); // Resume autoplay
+        } else {
+          setCountdown(count);
+        }
+      }, 1000);
+    }
+  };
+
+  const toggleAutoplay = () => {
+    setIsAutoPlaying(!isAutoPlaying);
+    setCountdown(null); // Clear countdown when manually toggling
+    if (countdownRef.current) {
+      clearInterval(countdownRef.current);
+    }
   };
   
   // Autoplay effect
@@ -103,12 +187,31 @@ const Model360Viewer = () => {
         onTouchStart={handleTouchStart}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
-        <img 
-          src={`${process.env.PUBLIC_URL}/images/modelturning/s${currentFrame}.png`}
-          alt={`Model view ${currentFrame}`}
-          className="model-image"
-          draggable={false}
-        />
+        <MaskedLiquidChrome
+          maskImage="images/mask-cutouts.png"
+          baseColor="#FFFCF1"
+          highlightColor="#F6B2B2"
+          speed={0.5}
+          amplitude={0.5}
+          shadowIntensity={.2}
+          shadowCenterX={44}
+          shadowCenterY={49}
+          shadowWidth={38}
+          shadowHeight={55}
+          shadowStart={70}
+          shadowEnd={100}
+          shadowFalloff={10}
+          shadowColor="rgba(0, 0, 0, 1)"
+          interactive={false}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        >
+          <img 
+            src={`${process.env.PUBLIC_URL}/images/modelturning/s${currentFrame}.png`}
+            alt={`Model view ${currentFrame}`}
+            className="model-image"
+            draggable={false}
+          />
+        </MaskedLiquidChrome>
       </div>
       <div className="rotation-hint">
         <svg className="rotation-icon" viewBox="0 0 24 24" width="18" height="18">
@@ -124,7 +227,7 @@ const Model360Viewer = () => {
         <span className="rotation-text">360°</span>
         <button 
           className="autoplay-toggle"
-          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+          onClick={toggleAutoplay}
           title={isAutoPlaying ? 'Pause autoplay' : 'Start autoplay'}
         >
           {isAutoPlaying ? (
@@ -138,6 +241,9 @@ const Model360Viewer = () => {
             </svg>
           )}
         </button>
+        {countdown && (
+          <span className="countdown-timer">{countdown}</span>
+        )}
       </div>
     </div>
   );
