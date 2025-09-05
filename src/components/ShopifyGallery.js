@@ -65,6 +65,8 @@ const ShopifyGallery = () => {
           imageAlt: edge.node.images.edges[0]?.node.altText || edge.node.title,
         }));
         setProducts(formattedProducts);
+      } else {
+        setProducts(getDemoProducts());
       }
       setLoading(false);
     } catch (error) {

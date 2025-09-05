@@ -18,10 +18,6 @@ const ProductPage = () => {
   const SHOPIFY_DOMAIN = 't4xyer-a0.myshopify.com';
   const STOREFRONT_ACCESS_TOKEN = '53ccb4131ef3725ef749e97a6c2a242f';
 
-  useEffect(() => {
-    fetchProduct();
-  }, [fetchProduct]);
-
   const fetchProduct = useCallback(async () => {
     const query = `
       {
@@ -102,7 +98,11 @@ const ProductPage = () => {
       setLoading(false);
       navigate('/shop');
     }
-  }, [id]);
+  }, [id, navigate]);
+
+  useEffect(() => {
+    fetchProduct();
+  }, [fetchProduct]);
 
   const handleAddToCart = () => {
     if (!selectedVariant) return;
