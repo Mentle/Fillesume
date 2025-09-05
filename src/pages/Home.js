@@ -203,40 +203,40 @@ const Home = () => {
           <div className="gallery-item large">
             <img 
               src={`${process.env.PUBLIC_URL}/images/gallery1.jpeg`} 
-              alt="Gallery Image 1" 
-              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery1.jpeg`, 'Gallery Image 1')}
+              alt="Gallery 1" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery1.jpeg`, 'Gallery 1')}
               style={{ cursor: 'pointer' }}
             />
           </div>
           <div className="gallery-item">
             <img 
               src={`${process.env.PUBLIC_URL}/images/gallery2.jpeg`} 
-              alt="Gallery Image 2" 
-              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery2.jpeg`, 'Gallery Image 2')}
+              alt="Gallery 2" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery2.jpeg`, 'Gallery 2')}
               style={{ cursor: 'pointer' }}
             />
           </div>
           <div className="gallery-item">
             <img 
               src={`${process.env.PUBLIC_URL}/images/gallery3.jpeg`} 
-              alt="Gallery Image 3" 
-              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery3.jpeg`, 'Gallery Image 3')}
+              alt="Gallery 3" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery3.jpeg`, 'Gallery 3')}
               style={{ cursor: 'pointer' }}
             />
           </div>
           <div className="gallery-item">
             <img 
               src={`${process.env.PUBLIC_URL}/images/gallery4.jpeg`} 
-              alt="Gallery Image 4" 
-              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery4.jpeg`, 'Gallery Image 4')}
+              alt="Gallery 4" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery4.jpeg`, 'Gallery 4')}
               style={{ cursor: 'pointer' }}
             />
           </div>
           <div className="gallery-item">
             <img 
               src={`${process.env.PUBLIC_URL}/images/gallery5.jpeg`} 
-              alt="Gallery Image 5" 
-              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery5.jpeg`, 'Gallery Image 5')}
+              alt="Gallery 5" 
+              onClick={() => openModal(`${process.env.PUBLIC_URL}/images/gallery5.jpeg`, 'Gallery 5')}
               style={{ cursor: 'pointer' }}
             />
           </div>

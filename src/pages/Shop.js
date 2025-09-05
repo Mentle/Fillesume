@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import LiquidChrome from '../components/LiquidChrome';
 import './Shop.css';
 
 const Shop = () => {

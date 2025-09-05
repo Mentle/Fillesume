@@ -24,7 +24,7 @@ const ImageModal = ({ isOpen, imageSrc, imageAlt, onClose }) => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [isOpen]);
+  }, [isOpen, handleKeyDown]);
 
   if (!isOpen) return null;
 

@@ -177,7 +177,7 @@ const Model360Viewer = () => {
         document.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, [isDragging, startX, handleMouseMove, handleTouchMove]);
+  }, [isDragging, startX, handleMouseMove, handleTouchMove, handleMouseUp, handleTouchEnd]);
 
   return (
     <div className="model-360-viewer">
