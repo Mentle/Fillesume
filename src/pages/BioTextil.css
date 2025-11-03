@@ -1,0 +1,184 @@
+/* BioTextil Page Styles */
+.biotextil-page {
+  background-color: var(--orchid-white);
+  overflow-x: hidden;
+}
+
+.biotextil-timeline {
+  position: relative;
+  height: 500vh; /* 5x viewport height for smooth scrolling */
+}
+
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  background-color: var(--orchid-white);
+}
+
+.scroll-sections {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.stage-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.stage-content {
+  pointer-events: auto;
+  text-align: center;
+  background-color: rgba(255, 252, 241, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 60px 80px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.stage-content h2 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--night-shadz);
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+}
+
+.stage-content p {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--gondola);
+  line-height: 1.8;
+}
+
+/* Stage-specific positioning */
+.stage-1 .stage-content {
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+.stage-2 .stage-content {
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+.stage-3 .stage-content {
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+.stage-4 .stage-content {
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .stage-content {
+    padding: 50px 60px;
+    max-width: 500px;
+  }
+  
+  .stage-content h2 {
+    font-size: 40px;
+  }
+  
+  .stage-content p {
+    font-size: 16px;
+  }
+  
+  .stage-1 .stage-content,
+  .stage-2 .stage-content,
+  .stage-3 .stage-content,
+  .stage-4 .stage-content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .biotextil-timeline {
+    height: 400vh; /* Shorter on mobile */
+  }
+  
+  .stage-section {
+    padding: 0 20px;
+  }
+  
+  .stage-content {
+    padding: 40px 30px;
+    max-width: 90%;
+  }
+  
+  .stage-content h2 {
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+  
+  .stage-content p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .stage-content {
+    padding: 30px 20px;
+  }
+  
+  .stage-content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  
+  .stage-content p {
+    font-size: 13px;
+  }
+}
+
+/* Animation for stage content */
+.stage-content {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mixing Station Overlay */
+.mixing-station-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: var(--orchid-white);
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

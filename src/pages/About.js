@@ -44,23 +44,28 @@ const About = () => {
               </p>
             </div>
             <div className="mission-visual">
-              <MaskedLiquidChrome
-                maskImage="images/mask-cutouts.png"
-                baseColor="#FFFCF1"
-                highlightColor="#F6B2B2"
-                speed={0.3}
-                amplitude={0.6}
-                shadowIntensity={0.8}
-                shadowCenterX={50}
-                shadowCenterY={60}
-                shadowWidth={40}
-                shadowHeight={70}
-                shadowStart={30}
-                shadowEnd={50}
-                shadowFalloff={25}
-                interactive={false}
-                style={{ height: '400px', borderRadius: '12px' }}
-              />
+              <div style={{ position: 'relative', height: '400px', borderRadius: '12px' }}>
+                <MaskedLiquidChrome
+                  maskImage="images/mask-cutouts.png"
+                  baseColor="#FFFCF1"
+                  highlightColor="#F6B2B2"
+                  speed={0.3}
+                  amplitude={0.6}
+                  shadowIntensity={0.8}
+                  shadowCenterX={50}
+                  shadowCenterY={60}
+                  shadowWidth={40}
+                  shadowHeight={70}
+                  shadowStart={30}
+                  shadowEnd={50}
+                  shadowFalloff={25}
+                  interactive={false}
+                  style={{ height: '100%', borderRadius: '12px' }}
+                />
+                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 10 }}>
+                  <Globe />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -111,9 +116,6 @@ const About = () => {
       <section className="process-section">
         <div className="container">
           <div className="process-content">
-            <div className="process-visual">
-              <Globe />
-            </div>
             <div className="process-text">
               <h2 className="section-title">NUESTRO PROCESO</h2>
               <div className="process-steps">

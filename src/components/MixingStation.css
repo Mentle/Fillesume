@@ -1,0 +1,259 @@
+.mixing-station-topdown {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--orchid-white);
+  overflow: hidden;
+}
+
+.mixing-instructions-top {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.mixing-instructions-top h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--night-shadz);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Receptacle - metallic square with rounded corners */
+.receptacle-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+}
+
+.receptacle {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #C0C0C0, #E8E8E8, #A8A8A8);
+  border-radius: 40px;
+  box-shadow: 
+    inset 0 4px 8px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 4px solid #909090;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.receptacle-placeholder {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #666;
+  text-align: center;
+  opacity: 0.5;
+}
+
+/* Ingredient dots */
+.ingredient-dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.ingredient-dot {
+  position: absolute;
+  border-radius: 50%;
+  animation: dropIn 0.6s ease-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes dropIn {
+  0% {
+    transform: translateY(-100px) scale(0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.liquid-content {
+  width: 150%;
+  height: 150%;
+  border-radius: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+}
+
+.liquid-content canvas {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Draggable ingredients */
+.draggable-ingredient {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  cursor: grab;
+  z-index: 100;
+  transition: transform 0.2s ease;
+}
+
+.draggable-ingredient:hover {
+  transform: scale(1.05);
+}
+
+.draggable-ingredient.dragging {
+  cursor: grabbing;
+  z-index: 1000;
+  transform: scale(1.1);
+}
+
+.ingredient-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.3));
+}
+
+.ingredient-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ingredients-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+}
+
+.mix-hint {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--gondola);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.mixing-progress-container {
+  position: absolute;
+  bottom: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.mixing-progress-bar {
+  position: relative;
+  width: 400px;
+  height: 30px;
+  background-color: rgba(174, 54, 71, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  border: 2px solid var(--night-shadz);
+}
+
+.mixing-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--night-shadz), #D64D5F);
+  transition: width 0.3s ease;
+  border-radius: 13px;
+}
+
+.mixing-percentage {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--night-shadz);
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .mixing-instructions-top h3 {
+    font-size: 24px;
+  }
+  
+  .receptacle {
+    width: 300px;
+    height: 300px;
+    border-radius: 30px;
+  }
+  
+  .draggable-ingredient {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .ingredient-label {
+    font-size: 14px;
+  }
+  
+  .mixing-progress-bar {
+    width: 300px;
+    height: 25px;
+  }
+  
+  .mixing-percentage {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mixing-instructions-top h3 {
+    font-size: 20px;
+  }
+  
+  .receptacle {
+    width: 250px;
+    height: 250px;
+    border-radius: 25px;
+  }
+  
+  .draggable-ingredient {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .ingredient-label {
+    font-size: 12px;
+  }
+  
+  .mixing-progress-bar {
+    width: 250px;
+    height: 20px;
+  }
+  
+  .mixing-percentage {
+    font-size: 16px;
+  }
+}

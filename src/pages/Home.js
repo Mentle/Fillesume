@@ -7,6 +7,9 @@ import Globe from '../components/Globe';
 import Model360Viewer from '../components/Model360Viewer';
 import ShopifyGallery from '../components/ShopifyGallery';
 import ImageModal from '../components/ImageModal';
+import SeaweedModel from '../components/SeaweedModel';
+import OliveModel from '../components/OliveModel';
+import FiberModel from '../components/FiberModel';
 import './Home.css';
 
 const Home = () => {
@@ -143,57 +146,27 @@ const Home = () => {
           <div className="garments-grid">
             <div className="garment-card">
               <div className="garment-image">
-                <div className="image-placeholder"></div>
+                <SeaweedModel />
               </div>
-              <h3>BIOMATERIALES</h3>
+              <h3>ALGAS PARDAS</h3>
               <p className="body-text">Desarrollados desde cero en nuestro taller-laboratorio</p>
             </div>
             <div className="garment-card">
               <div className="garment-image">
-                <div className="image-placeholder"></div>
+                <OliveModel />
               </div>
               <h3>HUESO DE ACEITUNA</h3>
               <p className="body-text">Transformamos residuos alimentarios en textiles innovadores</p>
             </div>
             <div className="garment-card">
               <div className="garment-image">
-                <div className="image-placeholder"></div>
+                <FiberModel />
               </div>
-              <h3>COMPOSTABLES</h3>
+              <h3>FIBRA NATURAL</h3>
               <p className="body-text">Garantizamos que puedan regresar a la tierra</p>
             </div>
           </div>
           <button className="section-cta">EXPLORA NUESTRA COLECCIÓN</button>
-        </div>
-      </section>
-
-      {/* Lifecycle Section */}
-      <section className="lifecycle-section">
-        <div className="container">
-          <Globe />
-          <p className="section-subtitle">El ciclo completo de nuestras prendas</p>
-          <div className="lifecycle-steps">
-            <div className="lifecycle-step">
-              <div className="step-number">01</div>
-              <h3>INVESTIGAR</h3>
-              <p className="body-text">Desarrollamos biomateriales en nuestro taller-laboratorio</p>
-            </div>
-            <div className="lifecycle-step">
-              <div className="step-number">02</div>
-              <h3>CREAR</h3>
-              <p className="body-text">Confeccionamos artesanalmente con ciencia y diseño</p>
-            </div>
-            <div className="lifecycle-step">
-              <div className="step-number">03</div>
-              <h3>USAR</h3>
-              <p className="body-text">Disfrutas de prendas únicas y sostenibles</p>
-            </div>
-            <div className="lifecycle-step">
-              <div className="step-number">04</div>
-              <h3>COMPOSTAR</h3>
-              <p className="body-text">La prenda regresa a la tierra como abono</p>
-            </div>
-          </div>
         </div>
       </section>
 

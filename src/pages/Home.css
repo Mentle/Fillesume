@@ -235,21 +235,62 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   margin-bottom: 60px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .garment-card {
   text-align: center;
+  width: 100%;
+  min-width: 0; /* Prevents overflow issues */
 }
 
 .garment-image {
   margin-bottom: 20px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  background-color: var(--orchid-white);
+  opacity: 0.95;
+  box-sizing: border-box;
 }
 
 .garment-image .image-placeholder {
   width: 100%;
-  height: 400px;
+  height: 100%;
   background-color: var(--orchid-white);
   opacity: 0.5;
+}
+
+/* Desktop - Large screens (1200px+) */
+@media screen and (min-width: 1200px) {
+  .garments-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  
+  .garment-image {
+    height: 400px;
+  }
+}
+
+/* Desktop - Medium screens (1025px - 1199px) */
+@media screen and (min-width: 1025px) and (max-width: 1199px) {
+  .garments-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    max-width: 100%;
+  }
+  
+  .garment-image {
+    height: 350px;
+  }
 }
 
 .garment-card h3 {
@@ -385,7 +426,8 @@
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1024px) {
+/* Tablet - Large (769px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
   .hero-title {
     font-size: 48px;
   }
@@ -405,6 +447,21 @@
 
   .garments-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+  }
+  
+  .garment-image {
+    height: 320px;
+  }
+  
+  .garment-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .garment-card .body-text {
+    font-size: 14px;
   }
 
   .lifecycle-steps {
@@ -413,29 +470,6 @@
   }
 }
 
-@media screen and (max-width: 480px) {
-  .hero {
-    margin-top: 60px;
-  }
-
-  .hero-content {
-    bottom: 60px;
-  }
-
-  .hero-subtitle {
-    font-size: 14px;
-  }
-}
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .hero-content {
-    bottom: 80px;
-  }
-
-  .hero-subtitle {
-    font-size: 16px;
-  }
-}
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .hero-content {
@@ -451,7 +485,16 @@
 
 /* Large desktop keeps the default 150px from the main rule */
 
-@media screen and (max-width: 768px) {
+/* Mobile - Large (481px - 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .hero-content {
+    bottom: 80px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+  
   .embrace-content {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -463,15 +506,12 @@
 
   .embrace-image {
     order: 1;
+    height: 400px;
   }
 
   .become-part-content {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-
-  .embrace-image {
-    height: 400px;
   }
 
   .embrace-text h2,
@@ -483,9 +523,101 @@
     font-size: 32px;
   }
 
-  .principles-grid,
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .garments-grid {
     grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 0 20px;
+  }
+  
+  .garment-image {
+    height: 350px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .garment-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .garment-card .body-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* Mobile - Small (up to 480px) */
+@media screen and (max-width: 480px) {
+  .hero {
+    margin-top: 60px;
+  }
+
+  .hero-content {
+    bottom: 60px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+  
+  .embrace-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .embrace-text {
+    order: 2;
+  }
+
+  .embrace-image {
+    order: 1;
+    height: 350px;
+  }
+
+  .become-part-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .embrace-text h2,
+  .become-part-text h2 {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .garments-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 15px;
+  }
+  
+  .garment-image {
+    height: 300px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .garment-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .garment-card .body-text {
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   .lifecycle-steps {

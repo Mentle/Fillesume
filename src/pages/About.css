@@ -164,17 +164,11 @@
 }
 
 .process-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.process-visual {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 500px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .process-steps {
@@ -298,16 +292,11 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .mission-content,
-  .process-content {
+  .mission-content {
     grid-template-columns: 1fr;
     gap: 60px;
   }
 
-  .process-visual {
-    order: -1;
-    height: 400px;
-  }
 
   .mission-text {
     padding-right: 0;
@@ -347,13 +336,8 @@
     padding: 80px 0;
   }
 
-  .mission-content,
-  .process-content {
+  .mission-content {
     gap: 50px;
-  }
-
-  .process-visual {
-    height: 300px;
   }
 
   .process-steps {
